@@ -30,13 +30,20 @@ var common = {
 };
 
 if (TARGET === 'start' || !TARGET) {
+
   module.exports = merge(common, {
     devtool: 'eval',
     module: {
-      loaders: [
-        { test: /\.js?$/, loaders: ['babel'], include: path.resolve(ROOT_PATH, 'app') }
-      ]
+      loaders: [{
+        test: /\.jsx?$/,
+        loader: 'babel',
+        query: {
+          presets: ['react', 'es2015']
+        },
+        include: path.resolve(ROOT_PATH, 'app')
+      }]
     },
+
     devServer: {
       port: 4000,
       colors: true,
