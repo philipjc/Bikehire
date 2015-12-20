@@ -1,10 +1,22 @@
 import './style/_app.css';
-import component from './component';
+import bikes from './constants/bikes.js';
+import createSystem from './HireSystem.js';
+import createNewBike from './Bike.js';
 
-run();
+let hireBikeSystem;
 
-function run() {
-  let app = document.createElement('div');
-  document.body.appendChild(app);
-  app.appendChild(component('Hello, Webpack!'));
-};
+main();
+addConstantBikes();
+
+function main() {
+  hireBikeSystem = createSystem();
+  console.log('hire bike syst ', hireBikeSystem);
+}
+
+function addConstantBikes() {
+  bikes.forEach(bike => {
+    hireBikeSystem.addBike(createNewBike(bike));
+  });
+}
+
+hireBikeSystem.getBikes();
