@@ -11,27 +11,34 @@ let hireSystem = (function() {
     let hires = [];
 
     function addBikeToSystem(bike) {
+      if (!bike) { return }
       bikes.push(bike);
     }
 
     function addCustomerToSystem(cust) {
+      if (!cust) { return }
       customers.push(cust);
     }
 
     function addHireToSystem(hire) {
+      if (!hire) { return }
       hires.push(hire);
     }
 
     function returnAllBikes() {
-      console.log('all bikes ', bikes);
+      return bikes || [];
     }
 
     function returnAllCustomers() {
-      console.log('all customers ', customers);
+      customers.length
+        ? console.log('all customers ', customers)
+        : console.log('No customers!');
     }
 
     function returnAllHires() {
-      console.log('all hires ', hires);
+      hires.length
+        ? console.log('all hires ', hires)
+        : console.log('No hires!');
     }
 
     // System Object

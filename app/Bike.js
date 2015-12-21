@@ -2,6 +2,7 @@ let Bike = {
 
   init: function(opt) {
     this.reference = opt.reference || 'void';
+    this.name = opt.name || 'basic bike';
     this.price = opt.price || 20;
     this.available = true;
   },

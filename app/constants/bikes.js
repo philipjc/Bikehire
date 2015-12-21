@@ -1,8 +1,8 @@
 const bikes = [
-  { reference: 'bn7464', price: 20 },
-  { reference: 'ae8565', price: 25 },
-  { reference: 'cf9843', price: 20 },
-  { reference: 'zx3444', price: 25 }
+  { name: 'Specialised',reference: 'bn7464', price: 20 },
+  { name: 'Orange',reference: 'ae8565', price: 25 },
+  { name: 'Specialised',reference: 'cf9843', price: 20 },
+  { name: 'Trek',reference: 'zx3444', price: 25 }
 ]
 
 export default bikes;
