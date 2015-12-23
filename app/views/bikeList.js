@@ -1,32 +1,37 @@
+'use strict';
 
-function showBikeList(bikes) {
+let bikeListView = {
 
-  if (!bikes) { return }
+  showBikeList(bikes) {
 
-  let middle = document.querySelector('.middle');
-  let bikeListContainer = document.createElement('div');
-  let heading = document.createElement('p');
-  let list = document.createElement('ul');
-  let title = 'Bike selection';
+    if (!bikes) { return }
 
-  bikeListContainer.classList.add('bikes');
-  heading.classList.add('bikes-heading');
-  list.classList.add('list-group', 'bike-list');
+    let middle = document.querySelector('.middle');
+    let bikeListContainer = document.createElement('div');
+    let heading = document.createElement('p');
+    let list = document.createElement('ul');
+    let title = 'Bike selection';
 
-  heading.innerHTML = title;
-  bikeListContainer.appendChild(heading);
-  bikeListContainer.appendChild(list);
-  middle.appendChild(bikeListContainer);
+    bikeListContainer.classList.add('bikes');
+    heading.classList.add('bikes-heading');
+    list.classList.add('list-group', 'bike-list');
 
-  let bikeListElement = document.querySelector('.bike-list');
+    heading.innerHTML = title;
+    bikeListContainer.appendChild(heading);
+    bikeListContainer.appendChild(list);
+    middle.appendChild(bikeListContainer);
 
-  bikes.forEach(bike => {
-    let item = document.createElement('li');
-    item.classList.add('list-group-item', 'bike-list-item');
-    item.innerHTML = bike.name;
-    bikeListElement.appendChild(item);
-  });
+    let bikeListElement = document.querySelector('.bike-list');
 
+    bikes.forEach(bike => {
+      let item = document.createElement('li');
+      item.classList.add('list-group-item', 'bike-list-item');
+      item.innerHTML = bike.name;
+      bikeListElement.appendChild(item);
+    });
+
+  }
 }
 
-export default showBikeList
+
+export default bikeListView

@@ -1,16 +1,23 @@
+'use strict';
 import './styles/_app.css';
+
+import pubSub from './pubSub.js';
+import bootStrapLink from './utils.js';
 import bikes from './constants/bikes.js';
+
 import createSystem from './HireSystem.js';
 import createNewBike from './Bike.js';
 
 import createMainView from './views/main.js';
-import showBikeList from './views/bikeList.js';
+import bikeListView from './views/bikeList.js';
+
+import bikeListCtrl from './controller/bikeListCtrl.js';
 
 let hireBikeSystem;
 let title = 'Hire Bike System';
 
 main();
-addConstantBikes();
+
 
 function main() {
 
@@ -24,25 +31,27 @@ function main() {
   }, 500);
 }
 
+console.log(pubSub);
+
 function buildDom() {
   createMainView(title);
-  showBikeList(hireBikeSystem.getBikes());
+  bikeListView.showBikeList(hireBikeSystem.getBikes());
+
+  addUIEvents();
 }
 
-function addConstantBikes() {
-  bikes.forEach(bike => {
-    hireBikeSystem.addBike(createNewBike(bike));
-  });
+function addUIEvents() {
+  bikeListCtrl.addBikeListEvent(hireBikeSystem.getBikes());
 }
 
-function bootStrapLink() {
-  let head = document.head;
-  let bootLink = document.createElement('link');
-  bootLink.rel = 'stylesheet';
-  bootLink.href = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css';
-  bootLink.crossorigin = 'anonymous';
-  head.appendChild(bootLink);
-}
+
+
+
+
+hireBikeSystem.addBike(createNewBike({ name: 'Specialised Bigtime', reference: 'bn7411', price: 30 , available: false }))
+hireBikeSystem.addBike(createNewBike({ name: 'Specialised Rockhop', reference: 'bn7423', price: 25 , available: true }))
+hireBikeSystem.addBike(createNewBike({ name: 'Trek Y', reference: 'bn7454', price: 30 , available: false }))
+hireBikeSystem.addBike(createNewBike({ name: 'Orange 888', reference: 'bn7499', price: 25 , available: true }))
 
 hireBikeSystem.getBikes();
 hireBikeSystem.getCustomers();

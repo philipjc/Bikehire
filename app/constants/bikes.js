@@ -1,8 +1,8 @@
 const bikes = [
-  { name: 'Specialised',reference: 'bn7464', price: 20 },
-  { name: 'Orange',reference: 'ae8565', price: 25 },
-  { name: 'Specialised',reference: 'cf9843', price: 20 },
-  { name: 'Trek',reference: 'zx3444', price: 25 }
+  { name: 'Specialised Arrow',reference: 'bn7464', price: 20 , available: true },
+  { name: 'Orange Tripple999',reference: 'ae8565', price: 25 , available: true },
+  { name: 'Specialised Rockhop',reference: 'cf9843', price: 20 , available: true },
+  { name: 'Trek Y',reference: 'zx3444', price: 25 , available: true }
 ]
 
 export default bikes;

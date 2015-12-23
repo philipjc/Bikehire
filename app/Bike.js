@@ -1,18 +1,24 @@
+'use strict';
 let Bike = {
 
-  init: function(opt) {
+  init(opt) {
+    console.log(opt);
     this.reference = opt.reference || 'void';
     this.name = opt.name || 'basic bike';
     this.price = opt.price || 20;
-    this.available = true;
+    this.available = opt.available;
   },
 
-  beHired: function() {
+  beHired() {
 
   },
 
-  beReturned: function() {
+  beReturned() {
 
+  },
+
+  availability() {
+    return this.available;
   }
 
 };

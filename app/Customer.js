@@ -1,5 +1,6 @@
 let Customer = {
-
+  'use strict';
+  
   init: function(opt) {
     this.name = opt.name || 'void';
     this.id = opt.id || 0;

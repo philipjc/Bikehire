@@ -1,5 +1,6 @@
 let hireSystem = (function() {
-
+  'use strict';
+  
   let instance;
 
   function init() {
