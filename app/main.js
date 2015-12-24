@@ -31,7 +31,7 @@ function main() {
   }, 500);
 }
 
-console.log(pubSub);
+console.log('PS ', pubSub.seeSubscribers());
 
 function buildDom() {
   createMainView(title);
@@ -41,7 +41,8 @@ function buildDom() {
 }
 
 function addUIEvents() {
-  bikeListCtrl.addBikeListEvent(hireBikeSystem.getBikes());
+  // bikeListCtrl.addBikeListEvent(hireBikeSystem.getBikes());
+  // bikeListView.publishListEvents();
 }
 
 

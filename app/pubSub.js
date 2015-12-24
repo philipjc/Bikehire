@@ -2,16 +2,17 @@ var pubSub = (function() {
 
   'use strict';
 
-  var subscribers = {};
+  let subscribers = {};
 
   return {
 
     // either return or call a method with data
-    publish: function(eventName, data) {
+    publish(eventName, data) {
       if (!subscribers[eventName]) {
         return;
       }
 
+      // pushing callbacks into the array on the property {eventName}
       subscribers[eventName].forEach(function(subscriber) {
         subscriber(data);
       });
@@ -19,13 +20,27 @@ var pubSub = (function() {
 
     // other modules use this, to register a callback
     // which is called when the eventName is published
-    subscribe: function(eventName, cb) {
+    subscribe(eventName, cb) {
+
+      var index;
       // create an array or push the cb to existing
       if (!subscribers[eventName]) {
         subscribers[eventName] = [];
       }
 
-      subscribers[eventName].push(cb);
+      index = subscribers[eventName].push(cb) -1;
+      // subscribers[eventName].push(cb);
+
+      // return an oject when app subscribes, allowing unsubscription
+      return {
+        dispose() {
+          subscribers[eventName].splice(index, 1);
+        }
+      }
+    },
+
+    seeSubscribers() {
+      return subscribers;
     }
   };
 

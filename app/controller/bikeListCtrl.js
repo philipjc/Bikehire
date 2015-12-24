@@ -1,41 +1,40 @@
 'use strict';
+import pubSub from '../pubSub.js';
+
 let bikeListCtrl = (() => {
 
-  let leavingListItem = item => {
-    item.classList.remove('list-group-item-success', 'list-group-item-danger');
-    item.removeEventListener('mouseover');
-    item.removeEventListener('mouseout');
+  let subscriptionIn, subscriptionOut;
+
+  subscriptionIn = pubSub.subscribe('bikelistAvailabilityIn', function checkAvailabilityIn(data) {
+    console.log('from bike ctrl, bikelist in was published with, ', data);
+    // unsub using data??
+    overListItem(data.bike, data.dom);
+    // subscriptionIn.dispose();
+  });
+
+  subscriptionOut = pubSub.subscribe('bikelistAvailabilityOut', function checkAvailabilityOut(data) {
+    console.log('from bike ctrl, bikelist was out published with, ', data);
+    // unsub using data??
+    leavingListItem(data);
+    // subscriptionOut.dispose();
+  });
+
+  let leavingListItem = data => {
+    data.dom.classList.remove('list-group-item-success', 'list-group-item-danger');
+    data.dom.removeEventListener('mouseover');
+    data.dom.removeEventListener('mouseout');
   }
 
-  let overListItem = (bikes, item) => {
-    console.log(bikes);
-    let thisBike = bikes.filter((bike) => {
-      return bike.name === item.innerHTML;
-    })[0];
+  let overListItem = (bike, el) => {
 
-    console.log(thisBike);
-    thisBike.available
-      ? item.classList.add('list-group-item-success')
-      : item.classList.add('list-group-item-danger');
+    bike.available
+      ? el.classList.add('list-group-item-success')
+      : el.classList.add('list-group-item-danger');
   }
 
   return {
 
-    addBikeListEvent(bikes) {
 
-      let bikeListItems = document.querySelectorAll('.bike-list-item');
-      let foreach = Array.prototype.forEach;
-
-      foreach.call(bikeListItems, (item) => {
-        item.addEventListener('mouseover', () => {
-          overListItem(bikes, item);
-        });
-
-        item.addEventListener('mouseout', () => {
-          leavingListItem(item);
-        });
-      });
-    }
   }
 
 })();
