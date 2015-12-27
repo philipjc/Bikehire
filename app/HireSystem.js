@@ -1,14 +1,17 @@
 let hireSystem = (function() {
   'use strict';
-  
+
   let instance;
 
   function init() {
 
+    // Bike collection
     let bikes = [];
 
+    // Customer collection
     let customers = [];
 
+    // Hires collection
     let hires = [];
 
     function addBikeToSystem(bike) {
@@ -42,6 +45,12 @@ let hireSystem = (function() {
         : console.log('No hires!');
     }
 
+    function returnSingleBike(ref) {
+      return bikes.filter(bike => {
+        return ref === bike.name;
+      })[0];
+    }
+
     // System Object
     return {
 
@@ -68,6 +77,10 @@ let hireSystem = (function() {
       getHires() {
         return returnAllHires();
       },
+
+      findBike(ref) {
+        return returnSingleBike(ref);
+      }
     }
   }
 
@@ -86,6 +99,6 @@ let hireSystem = (function() {
 
 })();
 
-export default function createSystem() {
+export default function hireSystem() {
   return hireSystem.getInstance();
 }

@@ -22,12 +22,13 @@ var pubSub = (function() {
     // which is called when the eventName is published
     subscribe(eventName, cb) {
 
-      var index;
+      let index;
       // create an array or push the cb to existing
       if (!subscribers[eventName]) {
         subscribers[eventName] = [];
       }
 
+      // fincd the index of the subscribed callback to prep for dispose
       index = subscribers[eventName].push(cb) -1;
       // subscribers[eventName].push(cb);
 

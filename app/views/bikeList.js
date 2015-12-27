@@ -1,7 +1,8 @@
 'use strict';
 import pubSub from '../pubSub.js';
+import hireSystem from '../HireSystem.js';
 
-let bikeListView = (() => {
+let bikeListView = ((hireSystem) => {
 
   return {
 
@@ -17,6 +18,24 @@ let bikeListView = (() => {
       pubSub.publish('bikelistAvailabilityOut', data);
     },
 
+    applyEvents() {
+      // Event delegate list
+      let list = document.querySelector('.bike-list');
+
+      list.addEventListener('mouseover', (e) => {
+        if (e.target && e.target.nodeName === 'LI') {
+          let ref = e.target.innerText;
+          let bike = hireSystem.findBike(ref);
+
+          // Prepare the mouseout event
+          list.addEventListener('mouseout', (e) => {
+            bikeListView.publishListOutEvent(bike, e.target);
+          });
+
+          bikeListView.publishListInEvent(bike, e.target);
+        }
+      });
+    },
 
     showBikeList(bikes) {
 
@@ -45,23 +64,16 @@ let bikeListView = (() => {
         item.innerHTML = bike.name;
         bikeListElement.appendChild(item);
 
-        bikeListView.applyEvents(bike, item);
-      });
-    },
-
-    applyEvents(bike, el) {
-      
-      el.addEventListener('mouseover', () => {
-        bikeListView.publishListInEvent(bike, el);
       });
 
-      el.addEventListener('mouseout', () => {
-        bikeListView.publishListOutEvent(bike, el);
-      });
+      // don't apply events forEach one!
+      bikeListView.applyEvents();
+
     }
+
   }
 
-})();
+})(hireSystem());
 
 
 export default bikeListView

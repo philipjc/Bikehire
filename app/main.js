@@ -5,7 +5,7 @@ import pubSub from './pubSub.js';
 import bootStrapLink from './utils.js';
 import bikes from './constants/bikes.js';
 
-import createSystem from './HireSystem.js';
+import hireSystem from './HireSystem.js';
 import createNewBike from './Bike.js';
 
 import createMainView from './views/main.js';
@@ -23,7 +23,7 @@ function main() {
 
   bootStrapLink();
 
-  hireBikeSystem = createSystem();
+  hireBikeSystem = hireSystem();
   console.log('hire bike syst ', hireBikeSystem);
 
   setTimeout(() => {
