@@ -24,7 +24,7 @@ let bikeListView = ((hireSystem) => {
 
       list.addEventListener('mouseover', (e) => {
         if (e.target && e.target.nodeName === 'LI') {
-          let ref = e.target.innerText;
+          let ref = e.target.dataset.bikeref;
           let bike = hireSystem.findBike(ref);
 
           // Prepare the mouseout event
@@ -37,7 +37,7 @@ let bikeListView = ((hireSystem) => {
       });
     },
 
-    showBikeList(bikes) {
+    renderBikeList(bikes) {
 
       if (!bikes) { return }
 
@@ -58,19 +58,17 @@ let bikeListView = ((hireSystem) => {
 
       let bikeListElement = document.querySelector('.bike-list');
 
+      // Make li element for each bike object.
       bikes.forEach(bike => {
         let item = document.createElement('li');
         item.classList.add('list-group-item', 'bike-list-item');
+        item.dataset.bikeref = bike.reference;
         item.innerHTML = bike.name;
         bikeListElement.appendChild(item);
-
       });
 
-      // don't apply events forEach one!
       bikeListView.applyEvents();
-
     }
-
   }
 
 })(hireSystem());

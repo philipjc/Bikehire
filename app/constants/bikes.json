@@ -1,0 +1,43 @@
+{
+  "bikes": [{
+    "name": "Specialised Arrow",
+    "reference": "bn7464",
+    "price": 20,
+    "available": true
+  }, {
+    "name": "Orange Tripple999",
+    "reference": "ae8565",
+    "price": 25,
+    "available": false
+  }, {
+    "name": "Specialised Rockhop",
+    "reference": "cf9843",
+    "price": 20,
+    "available": false
+  }, {
+    "name": "Trek Y",
+    "reference": "zx3444",
+    "price": 25,
+    "available": false
+  }, {
+    "name": "Fake Name",
+    "reference": "vx3411",
+    "price": 25,
+    "available": true
+  }, {
+    "name": "Fake Name",
+    "reference": "zx3422",
+    "price": 25,
+    "available": false
+  }, {
+    "name": "Fake Name",
+    "reference": "zs3456",
+    "price": 25,
+    "available": true
+  }, {
+    "name": "Fake Name",
+    "reference": "ax3498",
+    "price": 25,
+    "available": true
+  }]
+}

@@ -1,3 +1,5 @@
+'use strict';
+
 
 export default function bootStrapLink() {
   let head = document.head;

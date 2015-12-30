@@ -7,13 +7,13 @@ let bikeListCtrl = (() => {
 
   // save the subscription in a var, so can call the dispose.
   subscriptionIn = pubSub.subscribe('bikelistAvailabilityIn', function checkAvailabilityIn(data) {
-    console.log('Bikelist Ctrl in was published with, ', data);
+    console.log('Bikelist Ctrl IN, published with, ', data);
     overListItem(data.bike, data.dom);
     // subscriptionIn.dispose();
   });
 
   subscriptionOut = pubSub.subscribe('bikelistAvailabilityOut', function checkAvailabilityOut(data) {
-    console.log('from bike ctrl, bikelist was out published with, ', data);
+    console.log('Bikelist Ctrl OUT, published with, ', data);
     leavingListItem(data);
     // subscriptionOut.dispose();
   });

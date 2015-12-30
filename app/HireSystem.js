@@ -47,7 +47,7 @@ let hireSystem = (function() {
 
     function returnSingleBike(ref) {
       return bikes.filter(bike => {
-        return ref === bike.name;
+        return ref === bike.reference;
       })[0];
     }
 
